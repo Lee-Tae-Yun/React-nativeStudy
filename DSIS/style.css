@@ -1,0 +1,9 @@
+h1{
+    color: blue;
+    font-size: 40px;
+    font-family:'Courier New', Courier, monospace;
+    font-weight: 300;
+}
+p{
+    line-height: 2.0;
+}
