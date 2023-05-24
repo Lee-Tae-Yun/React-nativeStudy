@@ -2,7 +2,7 @@ import React from 'react'
 import {
     SafeAreaView,
     TouchableOpacity,
-    Text,
+    Text, 
     StyleSheet,
     Alert
 } from 'react-native'
