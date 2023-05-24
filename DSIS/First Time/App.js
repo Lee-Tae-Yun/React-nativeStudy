@@ -30,6 +30,7 @@ const App = () => {
 }
 
 
+
 const styles = StyleSheet.create({
 containerPowderblue: {
     flex: 1,
