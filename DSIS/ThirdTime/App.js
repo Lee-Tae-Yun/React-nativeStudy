@@ -11,34 +11,38 @@ const App = () => {
         <SafeAreaView style={{flex:1}}>
             <View style={{flex:8}}>
                 <View style = {{flex:1,flexDirection:'row'}}>
-                    <View style={{flex:1}}>
-                        <View style={{flex:2}}>
-                            <View style={styles.containerWhite}></View>
-                        </View>
-                        <View style={styles.containerBlue}></View>
-                    </View>
-                <View style={styles.containerBlack}></View>
-                    <View style={{flex:1}}>
-                        <View style={{flex:2}}>
-                            <View style={styles.containerYellow}></View>
-                        </View>    
-                        <View style={styles.containerBlue}></View>
-                    </View>
-                </View>
-                <View style = {{flex:1,flexDirection:'row'}}>
                     <View style={{flex:2}}>
-                        <View style={styles.containerWhite}></View>
+                        <View style={{flex:1,flexDirection:'row'}}>
+                            <View style={{flex:1}}>
+                                <View style={{flex:2}}>
+                                    <View style={styles.containerWhite}></View>
+                                </View>
+                                <View style={styles.containerBlue}></View>
+                            </View>
+                                <View style={styles.containerBlack}></View>
+                        </View> 
+                                <View style={styles.containerWhite}></View>
                     </View>
-                    <View style={styles.containerBlue}></View>
+
+                    <View style={{flex:1}}>
+                        <View style={{flex:1}}>
+                            <View style={styles.containerYellow}></View>
+                        </View>
+                        <View style={{flex:2}}>
+                            <View style={styles.containerBlue}></View>
+                        </View>
+                    </View>
                 </View>
             </View>
+
             <View style={styles.containerRed}></View>
-                <View style = {{flex:1,flexDirection:'row'}}>   
-                    <View style={styles.containerYellow}></View>
-                        <View style={{flex:2}}>
-                            <View style={styles.containerBlack}></View>
-                        </View>
+            
+            <View style = {{flex:1,flexDirection:'row'}}>   
+                <View style={styles.containerYellow}></View>
+                <View style={{flex:2}}> 
+                        <View style={styles.containerBlack}></View>
                 </View>
+            </View>
         </SafeAreaView>
     )
 }
