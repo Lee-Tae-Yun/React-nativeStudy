@@ -4,7 +4,7 @@ import {
  	Text,
 	StyleSheet,
 	ScrollView,
-	SafeAreaView,
+	SafeAreaView, 
 	TouchableOpacity,
 	Linking,
 	Image,
