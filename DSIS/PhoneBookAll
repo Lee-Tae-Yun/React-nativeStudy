@@ -1,0 +1,62 @@
+import React, { useState, useEffect } from 'react';
+import { View, Text, TouchableOpacity, Alert, Linking, ScrollView, Keyboard } from 'react-native';
+import Get_PhoneBook_Info from './phoneBook_Parser'
+import Loading from '../../Util/loading';
+import { useDarkMode,DynamicStyleSheet, DynamicValue, useDynamicStyleSheet } from 'react-native-dark-mode';
+import { SearchBar } from 'react-native-elements';
+import Toast from 'react-native-simple-toast';
+import { SafeAreaFrameContext, SafeAreaView } from 'react-native-safe-area-context';
+import { DefaultAlertWithFunctionAndClose } from '../../Alert/Alert_Error';
+
+
+const phoneBook_all = (props) => {
+    const styles = useDynamicStyleSheet(dynamicStyles)
+    // 통신을 통해 받아올 값의 자리 만들고 비워주기
+    // 왼쪽: 값 저장 변수, 오른쪽: 값 갱신 함수 ,초기값 []로 빈공간으로 초기화
+    const [Seunghak, setSeungHak] = useState([]) // 승학 캠퍼스의 전화번호 자리
+    const [Bumin, setBuMin] = useState([]) // 부민 캠퍼스의 전화번호 자리
+    const [Gudeuk, setGuDeuk] = useState([]) // 구덕 캠퍼스의 전화번호 자리
+
+
+
+
+    useEffect(() => {
+        async function fetchPhoneAPI() { 1
+            await fetch('https://dsisteam.com/thisis_py/call_number_info/call_number_json.py')
+            .then(response => response.json())
+            .then(data => {
+                setSeungHak(data.SeungHak)
+                setBuMin(data.Bumin)
+                setGuDeuk(data.Gudeuk)
+            })    
+        }
+        fetchPhoneAPI()
+        },[])
+        //...은 배열을 통째로 받아올때 사용
+        const dataAll = [...Seunghak, ...Bumin, ...Gudeuk]
+
+        return (
+            <ScrollView style={{paddingHorizontal:25, backgroundColor:'white'}}>
+                {
+                    dataAll.map((item, index) => {
+                        return (
+                            <TouchableOpacity
+                            style={{padding:10, borderBottomColor:'grey', borderBottomWidth:1}}
+                            onPress={() => DefaultAlertWithFunctionAndClose(" ", item.organization + " " + item.office +"입니다.\n연락하시겠습니까?", "확인", "취소", () => {Linking.openURL(`tel:051`+item.number.substr(0, 8))})}>
+                                <Text style = {{fontSize:15,color:'#009DFF',marginBottom:5}}>{item.organization}</Text>
+                                <View style={{flexDirection:'row', justifyContent:'space-between'}}>
+                                    <Text style={{fontSize:15}}>{item.office}</Text>
+                                    <Text style={{fontSize:15}}>{item.number}</Text>
+                                </View>
+                            </TouchableOpacity>
+                        )
+                    })
+                }
+            </ScrollView>
+        )
+    }
+    
+const dynamicStyles=new DynamicStyleSheet({
+})
+
+export default phoneBook_all;
